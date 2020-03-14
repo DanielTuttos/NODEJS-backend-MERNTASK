@@ -52,7 +52,7 @@ exports.crearUsuario = async (req, res) => {
         }, (error, token) => {
             if (error) throw error;
             // Mensaje de confirmacion
-            res.status(400).json({
+            res.json({
                 ok: true,
                 msg: 'El usuario se creo correctamente',
                 token

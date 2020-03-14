@@ -4,7 +4,7 @@ require('dotenv').config({ path: 'variables.env' });
 
 const conectarDB = async () => {
     try {
-        await mongoose.connect('mongodb://localhost/merntask'/* || process.env.DB_MONGO */, {
+        await mongoose.connect(/*'mongodb://localhost/merntask' || */ process.env.DB_MONGO, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: false,

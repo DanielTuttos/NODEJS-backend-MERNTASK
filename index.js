@@ -2,15 +2,23 @@ const express = require('express');
 
 const conectarDB = require('./config/db');
 
+const cors = require('cors');
+const morgan = require('morgan');
+
 // crear el servidor
 const app = express();
 
 // Conectar a la base de datos
 conectarDB();
+app.use(morgan('dev'));
 
 // Hbilitar express.json
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: false }));
+
+
+// habilitar cors
+app.use(cors());
 
 // puerto de la app
 const PORT = process.env.PORT || 4000;

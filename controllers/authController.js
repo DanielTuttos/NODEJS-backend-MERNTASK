@@ -50,7 +50,7 @@ exports.autenticarUsuario = async (req, res) => {
         }, (error, token) => {
             if (error) throw error;
             // Mensaje de confirmacion
-            res.status(400).json({
+            res.json({
                 ok: true,
                 token
             })
@@ -62,4 +62,18 @@ exports.autenticarUsuario = async (req, res) => {
     }
 
 
+}
+
+// obtiene el usuario que esta autenticado
+exports.usuarioAutenticado = async (req, res) => {
+    try {
+        const usuario = await Usuario.findById(req.usuario.id).select('-password');
+        res.json({
+            ok:true,
+            usuario
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: 'Hubo un error', error })
+    }
 }
